@@ -11,7 +11,14 @@ public class IndexController {
 	@RequestMapping(value = "/welcome", method = RequestMethod.GET)
 	@ResponseBody
 	public String index() {
-		return "<h1>Michael says Hello World</h1>\n";
+		String env = System.getenv("HELLO_WORLD");
+		String output = "<h1>Michael says Hello World</h1>\n";
+
+		if (env != null) {
+			output += "<p>HELLO_WORLD is " + env + "</p>";
+		}
+
+		return output;
 	}
 
 }
